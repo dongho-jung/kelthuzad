@@ -35,3 +35,6 @@ Application Options:
 Help Options:
   -h, --help     Show this help message
 ```
+
+# Demo
+[![asciicast](https://asciinema.org/a/242769.svg)](https://asciinema.org/a/242769)
