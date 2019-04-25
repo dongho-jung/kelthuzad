@@ -19,3 +19,19 @@ So I made up my mind to make my own thing. All you need to do is as follows...
 2. **Set the recipe** for executing the target process. That recipe could be anything executable like .sh, .exe, etc...
 3. **DONE**. ex) `./kelthuzad -c ./spawn.sh -p ./postgres_proxy.log -r 'timeout|error' -v` Give it a shot!
 (the content of *spawn.sh* could be like this. `kubectl port-forward --namespace postgresql svc/postgresql-postgresql 3****:3**** --address 175.*.*.* &> postgres_proxy.log`)
+
+# Usage
+```
+Usage:
+  kelthuzad [OPTIONS]
+
+Application Options:
+  -p, --path=    The path of the log
+  -c, --command= The path of a command string to respawn the process
+  -r, --regex=   The regex pattern to detect a failure
+  -v, --verbose  Print a verbose message to stdout
+  -d, --delay=   The seconds for waiting after respawning (default: 60)
+
+Help Options:
+  -h, --help     Show this help message
+```
