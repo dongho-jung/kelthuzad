@@ -56,3 +56,16 @@ Help Options:
 
 # Demo
 [![asciicast](https://asciinema.org/a/242769.svg)](https://asciinema.org/a/242769)
+
+# History
+## 1.1
+### Overview
+- make LogPath optional
+- change default Delay to 5 from 60
+- make the usage utilize object-oriented-programming more
+
+### Changed
+- New struct, Kelthuzad
+- Kelthuzad has only one exported method, Monitor()
+- Just use `New` Function returns initialized kelthuzad pointer
+- All you need to do is just getting by New() and monitoring it by .Monitor()
