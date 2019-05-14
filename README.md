@@ -57,6 +57,9 @@ Help Options:
 # Demo
 [![asciicast](https://asciinema.org/a/242769.svg)](https://asciinema.org/a/242769)
 
+# How to build it?
+- Linux: GOOS=linux GOARCH=amd64 go build -o kelthuzad_linux_amd64 kelthuzad.go
+
 # History
 ## 1.1
 ### Overview
