@@ -55,7 +55,7 @@ func (k *Kelthuzad) spawn() {
 		// get the stdout pipe before it starts and assign it into k.stdout to monitor stdout
 		stdout, err := cmd.StdoutPipe()
 		if err != nil {
-			log.FATALln("[FATAL] k.spawn stdout", err)
+			log.Fatalln("[FATAL] k.spawn stdout", err)
 		}
 
 		k.stdout = stdout
@@ -67,7 +67,7 @@ func (k *Kelthuzad) spawn() {
 		err := cmd.Start()
 		log.Printf("[SYSTEM] %v is spawned\n", cmd.Process.Pid)
 		if err != nil {
-			log.FATALln("[FATAL] k.spawn Start", err)
+			log.Fatalln("[FATAL] k.spawn Start", err)
 		}
 		cmd.Wait()
 		log.Printf("[SYSTEM] %v is done!\n", cmd.Process.Pid)
@@ -115,7 +115,7 @@ func (k *Kelthuzad) monitorLog() {
 	// get the Tail struct for monitoring the last part of the log
 	t, err := tail.TailFile(k.opt.LogPath, tail.Config{Follow: true, Location: &tail.SeekInfo{Offset: 0, Whence: os.SEEK_END}})
 	if err != nil {
-		log.FATALln("[FATAL] k.monitorLog tail", err)
+		log.Fatalln("[FATAL] k.monitorLog tail", err)
 	}
 
 	// monitor the log
@@ -159,7 +159,7 @@ func main() {
 	}
 
 	if (opt.CmdPath == "") == (opt.RawCommand == "") {
-		log.FATALln("[FATAL] You must specify one of CmdPath, RawCommand at least!")
+		log.Fatalln("[FATAL] You must specify one of CmdPath, RawCommand at least!")
 	}
 
 	// get a kelthuzad object
