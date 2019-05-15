@@ -17,26 +17,8 @@ So I made up my mind to make my own thing. All you need to do is as follows.
 # How can I use him?
 1. **Set the log** which is populated with the output of the target process. If need be, you can make use of redirection for logging.
 2. **Set the recipe** for executing the target process. That recipe could be anything executable like .sh, .exe, etc...
-3. **DONE**. ex) `./kelthuzad -c ./countdown.sh -r bye -v` Give it a shot!
+3. **DONE**. ex) `./kelthuzad -r 'someFallibleCommand foo bar' -r 'error|fail'` Give it a shot!
 
-the content of *countdown.sh* could be like as follows.
-```sh
-#!/bin/bash
-
-while :
-do
-    for n in {3..1}; do
-        echo "$n"
-        sleep 1
-    done
-    if [ $((RANDOM % 3)) -eq 0 ]; then
-        echo 'bye...'
-        sleep 99999
-    else
-        echo 'hello!'
-    fi
-done
-```
 
 # Usage
 ```
@@ -44,23 +26,36 @@ Usage:
   kelthuzad [OPTIONS]
 
 Application Options:
-  -p, --path=    The path of the log
-  -c, --command= The path of a command string to respawn the process
-  -r, --regex=   The regex pattern to detect a failure
-  -v, --verbose  Print a verbose message to stdout
-  -d, --delay=   The seconds for waiting after respawning (default: 5)
+  -l, --logPath=     The path of the log instead of stdout
+  -c, --commandPath= The path of a file containing command string to respawn the process
+  -r, --rawCommand=  The command string to spawn the process
+  -p, --pattern=     The regex pattern to detect a failure
+  -q, --quiet        Suppress the ouputs of process which is monitored
+  -d, --delay=       The seconds for waiting after respawning (default: 5)
 
 Help Options:
-  -h, --help     Show this help message
+  -h, --help         Show this help message
 ```
 
 # Demo
 [![asciicast](https://asciinema.org/a/242769.svg)](https://asciinema.org/a/242769)
 
-# How to build it?
+# How to build him?
 - Linux: GOOS=linux GOARCH=amd64 go build -o kelthuzad_linux_amd64 kelthuzad.go
+- Mac: GOOS=darwin GOARCH=amd64 go build -o kelthuzad_darwin_amd64 kelthuzad.go
 
 # History
+## 1.2
+### Overview
+- change flag options
+    - LogPath(p) -> LogPath(l)
+    - Regex(r) -> Pattern(p)
+    - use Quiet(q) instead of Verbose(v)
+    - new flag RawCommand(r) so you don't have to write a script with CmdPath to spawn 
+- support raw command string!
+    - don't have to write a script. if the command is simple enough, you can just pass it by -r 'soSimpleCommand arg0 arg1' 
+- improve logging to identify the source
+
 ## 1.1
 ### Overview
 - make LogPath optional
