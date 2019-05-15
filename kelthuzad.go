@@ -16,10 +16,10 @@ import (
 
 // Kelthuzad monitors a log or stdout, kills a sick one and respawns a normal one.
 type Kelthuzad struct {
-	cmd    *exec.Cmd
-	opt    *opts
-	regex  *regexp.Regexp
-	stdout io.ReadCloser
+	cmd     *exec.Cmd
+	opt     *opts
+	pattern *regexp.Regexp
+	stdout  io.ReadCloser
 }
 
 // opts have several options for argument parsing.
@@ -36,7 +36,7 @@ type opts struct {
 func New(opt *opts) *Kelthuzad {
 	kel := &Kelthuzad{}
 	kel.opt = opt
-	kel.regex = regexp.MustCompile(kel.opt.Pattern)
+	kel.pattern = regexp.MustCompile(kel.opt.Pattern)
 	kel.spawn()
 
 	return kel
@@ -87,10 +87,10 @@ func (k *Kelthuzad) kill() {
 	}
 }
 
-// check checks whether the line matches with the k.regex pattern.
+// check checks whether the line matches with the k.pattern.
 func (k *Kelthuzad) check(line string) {
-	// if the line contains the pattern of k.regex
-	if k.regex.MatchString(line) {
+	// if the line contains the k.pattern
+	if k.pattern.MatchString(line) {
 		// notify it
 		log.Printf("[FAIL] %v -> %v\n", line, k.opt.Pattern)
 
