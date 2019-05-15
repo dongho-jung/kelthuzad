@@ -127,6 +127,7 @@ func (k *Kelthuzad) monitorLog() {
 // monitorStdout monitors the stdout of the process and checks it.
 func (k *Kelthuzad) monitorStdout() {
 	for {
+		// monitor the stdout
 		scanner := bufio.NewScanner(k.stdout)
 		for scanner.Scan() {
 			k.check(scanner.Text())
@@ -149,7 +150,7 @@ func main() {
 	// initialize empty options
 	opt := &opts{}
 
-	// set the log
+	// set the log flags
 	log.SetFlags(log.Ltime | log.LstdFlags)
 
 	// parse the arguments
@@ -158,8 +159,9 @@ func main() {
 		os.Exit(1)
 	}
 
+	// make sure that one of these options to be specified
 	if (opt.CmdPath == "") == (opt.RawCommand == "") {
-		log.Fatalln("[FATAL] You must specify one of CmdPath, RawCommand at least!")
+		log.Fatalln("[FATAL] You must specify one of CmdPath, RawCommand!")
 	}
 
 	// get a kelthuzad object
