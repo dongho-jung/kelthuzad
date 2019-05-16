@@ -16,15 +16,15 @@ So I made up my mind to make my own thing. All you need to do is as follows.
 
 # How can I use him?
 ## Basic
-1. `./kelthuzad -r 'someFallibleCommand foo bar' -r 'error|fail'` **DONE**
+1. `./kelthuzad -r 'someFallibleCommand foo bar' -p 'error|fail'` **DONE**
 
 ## Use the log
 1. **Set the log** which is populated with the output of the target process. If need be, you can make use of redirection for logging.
-2. `./kelthuzad -r 'someFallibleCommand foo bar' -r 'error|fail' -l <logPath>` **DONE**
+2. `./kelthuzad -r 'someFallibleCommand foo bar' -p 'error|fail' -l <logPath>` **DONE**
 
 ## Use the recipe
 1. **Set the recipe** for executing the target process. That recipe could be anything executable like .sh, .exe, etc...
-2. `./kelthuzad -c <recipePath> -r 'error|fail'` **DONE**
+2. `./kelthuzad -c <recipePath> -p 'error|fail'` **DONE**
 
 for example, a recipe could be like as follows:
 ```sh
