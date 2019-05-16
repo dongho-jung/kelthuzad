@@ -1,5 +1,5 @@
 # Overview
-kelthuzad monitors a log. If any errors are detected, then he replaces it with a normal one.
+kelthuzad monitors a process. If any errors are detected, then he replaces it with normal one.
 
 # Origin of his name
 the name kelthuzad comes from `Kel' Thuzad` one of the cards in the TCG game Hearthstone.
