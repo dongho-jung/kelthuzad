@@ -86,8 +86,6 @@ Help Options:
 - make LogPath optional
 - change default Delay to 5 from 60
 - make the usage utilize object-oriented-programming more
-
-### Changed
 - New struct, **Kelthuzad**
 - Kelthuzad has only one exported method, Monitor()
 - **Just use `New`** Function that returns initialized kelthuzad pointer
