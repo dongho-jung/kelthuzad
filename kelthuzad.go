@@ -16,10 +16,11 @@ import (
 
 // Kelthuzad monitors a log or stdout, kills a sick one and respawns a normal one.
 type Kelthuzad struct {
-	cmd     *exec.Cmd
-	opt     *opts
-	pattern *regexp.Regexp
-	stdout  io.ReadCloser
+	cmd        *exec.Cmd
+	opt        *opts
+	pattern    *regexp.Regexp
+	stdout     io.ReadCloser
+	isSpawning bool
 }
 
 // opts have several options for argument parsing.
@@ -44,6 +45,8 @@ func New(opt *opts) *Kelthuzad {
 
 // spawn executes the command from k.opt.CmdPath and assigns it into k's cmd field.
 func (k *Kelthuzad) spawn() {
+	k.isSpawning = false
+
 	var cmd *exec.Cmd
 	if k.opt.CmdPath != "" {
 		cmd = exec.Command(k.opt.CmdPath)
@@ -71,6 +74,11 @@ func (k *Kelthuzad) spawn() {
 		}
 		cmd.Wait()
 		log.Printf("[SYSTEM] %v is done!\n", cmd.Process.Pid)
+
+		time.Sleep(time.Duration(k.opt.Delay+5) * time.Second)
+		if k.isSpawning == false {
+			k.spawn()
+		}
 	}()
 
 	// return the created Cmd struct
@@ -94,12 +102,14 @@ func (k *Kelthuzad) check(line string) {
 		// notify it
 		log.Printf("[FAIL] %v -> %v\n", line, k.opt.Pattern)
 
+		// kill the sick one
+		k.kill()
+
+		k.isSpawning = true
+
 		// wait to avoid being with flooded with respawning
 		log.Printf("[SYSTEM] Waiting %v seconds...\n", k.opt.Delay)
 		time.Sleep(time.Second * time.Duration(k.opt.Delay))
-
-		// kill the sick one
-		k.kill()
 
 		// respawn the normal one
 		k.spawn()
