@@ -25,17 +25,17 @@ So I made up my mind to make my own thing. All you need to do is as follows.
 
 ### Basic
 
-1.`./kelthuzad -r 'fallibleCommand foo bar' -p 'error|fail'`
+1. `./kelthuzad -r 'fallibleCommand foo bar' -p 'error|fail'`
 
 ### Use the log
 
-1.**Set the log** which is populated with the output of the target process. If need be, you can make use of redirection for logging.
-2.`./kelthuzad -r 'fallibleCommand foo bar' -p 'error|fail' -l <logPath>`
+1. **Set the log** which is populated with the output of the target process. If need be, you can make use of redirection for logging.
+2. `./kelthuzad -r 'fallibleCommand foo bar' -p 'error|fail' -l <logPath>`
 
 ### Use the recipe
 
-1.**Set the recipe** for executing the target process. That recipe could be anything executable like .sh, .exe, etc...
-2.`./kelthuzad -c <fallibleRecipePath> -p 'error|fail'`
+1. **Set the recipe** for executing the target process. That recipe could be anything executable like .sh, .exe, etc...
+2. `./kelthuzad -c <fallibleRecipePath> -p 'error|fail'`
 
 for example, a recipe could be like as follows:
 
@@ -80,28 +80,28 @@ Help Options:
 
 ## How to build him
 
-- Linux: GOOS=linux GOARCH=amd64 go build -o kelthuzad_linux_amd64 kelthuzad.go
-- Mac: GOOS=darwin GOARCH=amd64 go build -o kelthuzad_darwin_amd64 kelthuzad.go
+-  Linux: GOOS=linux GOARCH=amd64 go build -o kelthuzad_linux_amd64 kelthuzad.go
+-  Mac: GOOS=darwin GOARCH=amd64 go build -o kelthuzad_darwin_amd64 kelthuzad.go
 
 ## History
 
 ### 1.2
 
-- change flag options
+-   change flag options
     - LogPath(p) -> LogPath(l)
     - Regex(r) -> Pattern(p)
     - use Quiet(q) instead of Verbose(v)
     - new flag RawCommand(r) so you don't have to write a script with CmdPath to spawn
-- support raw command string!
+-   support raw command string!
     - don't have to write a script. if the command is simple enough, you can just pass it by -r 'soSimpleCommand arg0 arg1'
-- improve logging to identify the source
+-   improve logging to identify the source
 
 ### 1.1
 
-- make LogPath optional
-- change default Delay to 5 from 60
-- make the usage utilize object-oriented-programming more
-- New struct, **Kelthuzad**
-- Kelthuzad has only one exported method, Monitor()
-- **Just use `New`** Function that returns initialized kelthuzad pointer
-- **All you need to do is just getting by New() and monitoring it by .Monitor()**
+-   make LogPath optional
+-   change default Delay to 5 from 60
+-   make the usage utilize object-oriented-programming more
+-   New struct, **Kelthuzad**
+-   Kelthuzad has only one exported method, Monitor()
+-   **Just use `New`** Function that returns initialized kelthuzad pointer
+-   **All you need to do is just getting by New() and monitoring it by .Monitor()**
