@@ -79,7 +79,7 @@ Help Options:
   -  new flag RawCommand(r) so you don't have to write a script with CmdPath to spawn 
 -  support raw command string!
   -  don't have to write a script. if the command is simple enough, you can just pass it by -r 'soSimpleCommand arg0 arg1' 
--improve logging to identify the source
+-  improve logging to identify the source
 
 ### 1.1
 -  make LogPath optional
