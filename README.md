@@ -46,7 +46,6 @@ do
 done
 ```
 
-
 ## Usage
 ```
 Usage:
@@ -68,25 +67,25 @@ Help Options:
 [![asciicast](https://asciinema.org/a/242769.svg)](https://asciinema.org/a/242769)
 
 ## How to build him
-- Linux: GOOS=linux GOARCH=amd64 go build -o kelthuzad_linux_amd64 kelthuzad.go
-- Mac: GOOS=darwin GOARCH=amd64 go build -o kelthuzad_darwin_amd64 kelthuzad.go
+-Linux: GOOS=linux GOARCH=amd64 go build -o kelthuzad_linux_amd64 kelthuzad.go
+-Mac: GOOS=darwin GOARCH=amd64 go build -o kelthuzad_darwin_amd64 kelthuzad.go
 
 ## History
 ### 1.2
-- change flag options
-    - LogPath(p) -> LogPath(l)
-    - Regex(r) -> Pattern(p)
-    - use Quiet(q) instead of Verbose(v)
-    - new flag RawCommand(r) so you don't have to write a script with CmdPath to spawn 
-- support raw command string!
-    - don't have to write a script. if the command is simple enough, you can just pass it by -r 'soSimpleCommand arg0 arg1' 
-- improve logging to identify the source
+-change flag options
+  -LogPath(p) -> LogPath(l)
+  -Regex(r) -> Pattern(p)
+  -use Quiet(q) instead of Verbose(v)
+  -new flag RawCommand(r) so you don't have to write a script with CmdPath to spawn 
+-support raw command string!
+  -don't have to write a script. if the command is simple enough, you can just pass it by -r 'soSimpleCommand arg0 arg1' 
+-improve logging to identify the source
 
 ### 1.1
-- make LogPath optional
-- change default Delay to 5 from 60
-- make the usage utilize object-oriented-programming more
-- New struct, **Kelthuzad**
-- Kelthuzad has only one exported method, Monitor()
-- **Just use `New`** Function that returns initialized kelthuzad pointer
-- **All you need to do is just getting by New() and monitoring it by .Monitor()**
+-make LogPath optional
+-change default Delay to 5 from 60
+-make the usage utilize object-oriented-programming more
+-New struct, **Kelthuzad**
+-Kelthuzad has only one exported method, Monitor()
+-**Just use `New`** Function that returns initialized kelthuzad pointer
+-**All you need to do is just getting by New() and monitoring it by .Monitor()**
