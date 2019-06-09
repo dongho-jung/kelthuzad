@@ -25,17 +25,17 @@ So I made up my mind to make my own thing. All you need to do is as follows.
 
 ### Basic
 
-1. `./kelthuzad -r 'fallibleCommand foo bar' -p 'error|fail'`
+1.  `./kelthuzad -r 'fallibleCommand foo bar' -p 'error|fail'`
 
 ### Use the log
 
-1. **Set the log** which is populated with the output of the target process. If need be, you can make use of redirection for logging.
-2. `./kelthuzad -r 'fallibleCommand foo bar' -p 'error|fail' -l <logPath>`
+1.  **Set the log** which is populated with the output of the target process. If need be, you can make use of redirection for logging.
+2.  `./kelthuzad -r 'fallibleCommand foo bar' -p 'error|fail' -l <logPath>`
 
 ### Use the recipe
 
-1. **Set the recipe** for executing the target process. That recipe could be anything executable like .sh, .exe, etc...
-2. `./kelthuzad -c <fallibleRecipePath> -p 'error|fail'`
+1.  **Set the recipe** for executing the target process. That recipe could be anything executable like .sh, .exe, etc...
+2.  `./kelthuzad -c <fallibleRecipePath> -p 'error|fail'`
 
 for example, a recipe could be like as follows:
 
