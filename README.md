@@ -1,3 +1,5 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/753a3a93a96e45149d7e19fb1639fcb7)](https://app.codacy.com/app/0xF4D3C0D3/kelthuzad?utm_source=github.com&utm_medium=referral&utm_content=0xF4D3C0D3/kelthuzad&utm_campaign=Badge_Grade_Dashboard)
+
 # Overview
 kelthuzad watches a process. Whenever any errors are detected from its output or a log, then he replaces it with a normal one.
 
@@ -63,7 +65,6 @@ Help Options:
 ```
 
 # Demo
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/753a3a93a96e45149d7e19fb1639fcb7)](https://app.codacy.com/app/0xF4D3C0D3/kelthuzad?utm_source=github.com&utm_medium=referral&utm_content=0xF4D3C0D3/kelthuzad&utm_campaign=Badge_Grade_Dashboard)
 [![asciicast](https://asciinema.org/a/242769.svg)](https://asciinema.org/a/242769)
 
 # How to build him?
