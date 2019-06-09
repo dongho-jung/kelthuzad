@@ -182,7 +182,7 @@ func main() {
 	signal.Notify(signalChan, os.Interrupt)
 	go func() {
 		<-signalChan
-		log.Println("[SYSTEM] recieved an interrupt, stopping...\n")
+		log.Print("[SYSTEM] recieved an interrupt, stopping...\n\n")
 		kel.kill()
 		os.Exit(0)
 	}()
