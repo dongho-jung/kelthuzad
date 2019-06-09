@@ -9,24 +9,24 @@ the name kelthuzad comes from `Kel' Thuzad` one of the cards in the TCG game Hea
 
 As you could already get it, he restores an erroneous process.
 
-## When I need him?
-### TL; DR. You would need him when you want to monitor, pattern detect, respawn a process.
+## When I need him
+### TL; DR. You would need him when you want to monitor, pattern detect, respawn a process
 
 In my case, I had a pod that orchestrated by k8s. It communicated with the external network by proxy. However, the container used to go wrong at times for a reason or another. Whenever the container goes wrong, k8s revived it but not the proxy. So what happens? The actual service recovered and running with no problems behind the scenes, but the proxy just referenced the previous wrong one. I had two options, one is making a new stateful set for only the proxy, and another one is monitoring it and replacing automatically. K8s already implemented the former, but it was quite hard to use when I saw. I also found the latter such as 'Immortal', 'Forever', 'Supervisor' but they were also hard to use or had some dependencies.
 
 So I made up my mind to make my own thing. All you need to do is as follows.
 
-## How can I use him?
+## How can I use him
 ### Basic
-1. `./kelthuzad -r 'fallibleCommand foo bar' -p 'error|fail'`
+1.`./kelthuzad -r 'fallibleCommand foo bar' -p 'error|fail'`
 
 ### Use the log
-1. **Set the log** which is populated with the output of the target process. If need be, you can make use of redirection for logging.
-2. `./kelthuzad -r 'fallibleCommand foo bar' -p 'error|fail' -l <logPath>`
+1.**Set the log** which is populated with the output of the target process. If need be, you can make use of redirection for logging.
+2.`./kelthuzad -r 'fallibleCommand foo bar' -p 'error|fail' -l <logPath>`
 
 ### Use the recipe
-1. **Set the recipe** for executing the target process. That recipe could be anything executable like .sh, .exe, etc...
-2. `./kelthuzad -c <fallibleRecipePath> -p 'error|fail'`
+1.**Set the recipe** for executing the target process. That recipe could be anything executable like .sh, .exe, etc...
+2.`./kelthuzad -c <fallibleRecipePath> -p 'error|fail'`
 
 for example, a recipe could be like as follows:
 ```sh
@@ -67,7 +67,7 @@ Help Options:
 ## Demo
 [![asciicast](https://asciinema.org/a/242769.svg)](https://asciinema.org/a/242769)
 
-## How to build him?
+## How to build him
 - Linux: GOOS=linux GOARCH=amd64 go build -o kelthuzad_linux_amd64 kelthuzad.go
 - Mac: GOOS=darwin GOARCH=amd64 go build -o kelthuzad_darwin_amd64 kelthuzad.go
 
