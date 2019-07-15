@@ -68,10 +68,10 @@ func (k *Kelthuzad) spawn() {
 	cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
 	go func() {
 		err := cmd.Start()
-		log.Printf("[SYSTEM] %v is spawned\n", cmd.Process.Pid)
 		if err != nil {
 			log.Fatalln("[FATAL] k.spawn Start", err)
 		}
+		log.Printf("[SYSTEM] %v is spawned\n", cmd.Process.Pid)
 		cmd.Wait()
 		log.Printf("[SYSTEM] %v is done!\n", cmd.Process.Pid)
 
